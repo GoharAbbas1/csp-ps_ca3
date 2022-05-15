@@ -1,24 +1,25 @@
 !DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="kanban.css">
+    <link rel="stylesheet" href="kanban.css"> <!-- link css file-->
     <title>Kanban Board</title>
-    <script>
-	function drag(ev) {
-		ev.dataTransfer.setData("text", ev.target.id);
+    <script>  // adding java script
+                                   
+	function drag(ev) {        //ondrop="drop(event)" specifies when data is dropped, a drop event occurs and we call the drop method
+		ev.dataTransfer.setData("text", ev.target.id);  
 	}
 
-	function allowDrop(ev) {
+	function allowDrop(ev) {  // function for allow delete
 		ev.preventDefault();
 	}
 
-	function drop(ev) {
+	function drop(ev) {   // deleting specfic item
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
 		ev.currentTarget.appendChild(document.getElementById(data));
 	}
 
-	function createTask(){
+	function createTask(){    // creating  new task in queuw
 		var x = document.getElementById("inprogress");
 		var y = document.getElementById("done");
 		var z = document.getElementById("create-new-task-block");
@@ -33,7 +34,7 @@
 		}
 	}
 
-	function saveTask(){
+	function saveTask(){   // it used to create and save task
 		// var saveButton = document.getElementById("save-button");
 		// var editButton = document.getElementById("edit-button");
 		// if (saveButton.style.display === "none") {
@@ -46,8 +47,8 @@
         var todo = document.getElementById("todo");
             var taskName = document.getElementById("task-name").value;
             todo.innerHTML += `
-            <div class="task" id="${taskName.toLowerCase().split(" ").join("")}" draggable="true" ondragstart="drag(event)">
-                <span>${taskName}</span>
+            <div class="task" id="${taskName.toLowerCase().split(" ").join("")}" draggable="true" ondragstart="drag(event)">  
+                <span>${taskName}</span>  
             </div>
             
 
@@ -55,7 +56,7 @@
 		`
 	}
 
-	function editTask(){
+	function editTask(){  // Editing new existing task
 		var saveButton = document.getElementById("save-button");
 		var editButton = document.getElementById("edit-button");
 		if (saveButton.style.display === "none") {
@@ -71,15 +72,15 @@
 <body>
     <div class="container">
         <div class="kanban-heading">
-            <strong class="kanban-heading-text">Kanban Board</strong>
+            <strong class="kanban-heading-text">Kanban Board</strong>  <!--- Adding title on top -->
         </div>
-        <div class="kanban-board">
-            <div class="kanban-block" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="kanban-board">  <!-- create kanban broad-->
+            <div class="kanban-block" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)"> <!--- Adding sample tasks to "To Do" section -->
                 <strong>To Do</strong>
-                <div class="task-button-block">
-                    <button id="task-button" onclick="createTask()">Create new task</span>
+                <div class="task-button-block">   
+                    <button id="task-button" onclick="createTask()">Create new task</span> <!-- Add button in kanban broad for creating new task-->
                 </div>
-                <div class="task" id="task1" draggable="true" ondragstart="drag(event)">
+                <div class="task" id="task1" draggable="true" ondragstart="drag(event)">   <!-- creating defult 6 task-->
                     <span>Task 1</span>
                 </div>
                 <div class="task" id="task2" draggable="true" ondragstart="drag(event)">
@@ -99,13 +100,13 @@
                 </div>
             </div>
             <div class="kanban-block" id="inprogress" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <strong>In Progress</strong>
+                <strong>In Progress</strong>  <!--- creating div In progress list -->
             </div>
             <div class="kanban-block" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <strong>Done</strong>
+                <strong>Done</strong> <!--- creating div In done list -->
             </div>
             <div class="create-new-task-block" id="create-new-task-block">
-                <strong>New Task</strong>
+                <strong>New Task</strong>  <!--- creating div In new list -->
                 <span class="form-row">
                     <label class="form-row-label" for="task-name">Task</label>
                     <input class="form-row-input" type="text" name="task-name" id="task-name">
@@ -123,9 +124,9 @@
                     </select>
                 </span>
                 <span class="form-row-buttons">
-                    <button id="edit-button" onclick="editTask()">Edit</span>
-                    <button id="save-button" onclick="saveTask()">Save</span>
-                    <button id="cancel-button" onclick="createTask()">Cancel</span>
+                    <button id="edit-button" onclick="editTask()">Edit</span> <!--- creating edit button -->
+                    <button id="save-button" onclick="saveTask()">Save</span>  <!--- creating save button -->
+                    <button id="cancel-button" onclick="createTask()">Cancel</span>  <!--- creating cancel button -->
                 </span>
             </div>
         </div>
