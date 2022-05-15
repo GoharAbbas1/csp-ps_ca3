@@ -1,6 +1,5 @@
 import KanbanAPI from "KanbanAPI.js";
 
-
 export default class DropZone {
 	static createDropZone() {
 		const range = document.createRange();
