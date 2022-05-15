@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="kanban.css">
     <title>Kanban Board</title>
+    <script>
 	function drag(ev) {
 		ev.dataTransfer.setData("text", ev.target.id);
 	}
@@ -42,10 +43,14 @@
 		//     saveButton.style.display = "none";
 		//     editButton.style.display = "block";
 		// }
+        var todo = document.getElementById("todo");
+            var taskName = document.getElementById("task-name").value;
+            todo.innerHTML += `
+            <div class="task" id="${taskName.toLowerCase().split(" ").join("")}" draggable="true" ondragstart="drag(event)">
+                <span>${taskName}</span>
+            </div>
+            
 
-		var todo = document.getElementById("todo");
-		var taskName = document.getElementById("task-name").value;
-		todo.innerHTML += `
 		
 		`
 	}
@@ -61,7 +66,7 @@
 			editButton.style.display = "block";
 		}
 	}
-	
+</script>
 </head>
 <body>
     <div class="container">
